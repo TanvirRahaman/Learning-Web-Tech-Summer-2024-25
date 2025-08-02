@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>DOM Calculator</title>
+
+</head>
+
+<body>
+
+  <div id="main"></div>
+
+  <script>
+
+    const container = document.getElementById('main');
+
+    const num1 = document.createElement('input');
+
+    num1.setAttribute('type', 'number');
+
+    num1.setAttribute('id', 'num1');
+
+    
+    num1.setAttribute('placeholder', 'First Number');
+
+    const operator = document.createElement('select');
+
+    operator.setAttribute('id', 'operator');
+
+    ['+', '-', '*', '/'].forEach(op => {
+
+      const option = document.createElement('option');
+
+      option.value = op;
+
+      option.text = op;
+
+      operator.appendChild(option);
+
+    });
+
+
+    const num2 = document.createElement('input');
+
+    num2.setAttribute('type', 'number');
+
+    num2.setAttribute('id', 'num2');
+
+    num2.setAttribute('placeholder', 'Second Number');
+
+    const button = document.createElement('button');
+
+    button.innerText = '=';
+
+    button.onclick = calculate;
+
+    const result = document.createElement('h3');
+
+    result.innerHTML = 'Result: <span id="result"></span>';
+
+    
+    
+
+    container.appendChild(num1);
+
+    container.appendChild(operator);
+
+    container.appendChild(num2);
+
+    container.appendChild(button);
+
+    container.appendChild(result);
+
+   
+
+    function calculate() {
+
+      const n1 = parseFloat(document.getElementById('num1').value);
+
+      const n2 = parseFloat(document.getElementById('num2').value);
+
+      const op = document.getElementById('operator').value;
+
+      let res;
+
+      if (op === '+') res = n1 + n2;
+
+      else if (op === '-') res = n1 - n2;
+
+      else if (op === '*') res = n1 * n2;
+
+      else if (op === '/') res = n2 !== 0 ? n1 / n2 : 'Error';
+
+      document.getElementById('result').innerText = res;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
