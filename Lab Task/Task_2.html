@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    <style>
+        #error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Email</h1>
+    <form onsubmit="return validateEmail()">
+        <input type="text" id="email" placeholder="Enter Email Address">
+        
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </br>
+
+        <p id="error"></p>
+    </form>
+
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById('email').value.trim();
+            const errorMsg = document.getElementById('error');
+
+            // Rule 1: Not empty
+            if (emailInput === "") {
+                errorMsg.textContent = "Email can't be empty!";
+                return false;
+            }
+
+            // Rule 2: Must be valid email address
+            if (!/^[a-zA-Z]/.test(emailInput)) {
+                errorMsg.textContent = "Email must sample@exampe.com";
+                return false;
+            }
+
+            
+
+            errorMsg.textContent = "";
+            alert("Email is valid!");
+            return true;
+        }
+    </script>
+</body>
+</html>
+
